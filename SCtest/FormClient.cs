@@ -23,6 +23,14 @@ namespace SCtest
         }
 
         /// <summary>
+        /// UDP连接
+        /// </summary>
+        public void UDPConnect()
+        {
+            client = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        }
+
+        /// <summary>
         /// 连接到服务器
         /// </summary>
         public void AsyncConnect()
@@ -49,6 +57,23 @@ namespace SCtest
             {
                 button_con.Enabled = true;
             }
+        }
+
+        /// <summary>
+        /// UDP发送消息
+        /// </summary>
+        /// <param name="socket"></param>
+        /// <param name="message"></param>
+        public void UDPSend(Socket socket,string message)
+        {
+            var ip = textBox_ip.Text;
+            var port = textBox_port.Text;
+            IPAddress broadcast = IPAddress.Parse(ip);
+
+            byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+            IPEndPoint ep = new IPEndPoint(broadcast, Convert.ToInt32(port));
+
+            socket.SendTo(sendbuf, ep);
         }
 
         /// <summary>
@@ -130,7 +155,15 @@ namespace SCtest
         /// <param name="e"></param>
         private void Button_send_Click(object sender, EventArgs e)
         {
-            AsyncSend(client, textBox_send.Text);
+            var typestr = comboBox_type.Text;
+            if (typestr == "TCP")
+            {
+                AsyncSend(client, textBox_send.Text);
+            }
+            else
+            {
+                UDPSend(client, textBox_send.Text);
+            }           
         }
        
 
@@ -141,7 +174,31 @@ namespace SCtest
         /// <param name="e"></param>
         private void Button_con_Click(object sender, EventArgs e)
         {
-            AsyncConnect();
+            button_con.Enabled = false;
+
+            var contype = comboBox_type.Text;
+            var ip = textBox_ip.Text;
+            var port = textBox_port.Text;
+            if (contype == "" || ip == "" || port == "")
+            {
+                MessageBox.Show("请先输入连接类型、IP和端口号");
+                button_con.Enabled = true;
+                return;
+            }
+
+            comboBox_type.Enabled = false;
+            textBox_ip.ReadOnly = true;
+            textBox_port.ReadOnly = true;
+            textBox_MSG.ReadOnly = true;
+
+            if (contype == "TCP")
+            {
+                AsyncConnect();
+            }
+            else
+            {
+                UDPConnect();
+            }           
         }
     }
 }

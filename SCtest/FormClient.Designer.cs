@@ -36,6 +36,8 @@
             this.label_port = new System.Windows.Forms.Label();
             this.textBox_ip = new System.Windows.Forms.TextBox();
             this.textBox_port = new System.Windows.Forms.TextBox();
+            this.comboBox_type = new System.Windows.Forms.ComboBox();
+            this.label_type = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_send
@@ -66,7 +68,7 @@
             // 
             // button_con
             // 
-            this.button_con.Location = new System.Drawing.Point(579, 20);
+            this.button_con.Location = new System.Drawing.Point(579, 31);
             this.button_con.Name = "button_con";
             this.button_con.Size = new System.Drawing.Size(185, 58);
             this.button_con.TabIndex = 3;
@@ -77,40 +79,62 @@
             // label_ip
             // 
             this.label_ip.AutoSize = true;
-            this.label_ip.Location = new System.Drawing.Point(12, 36);
+            this.label_ip.Location = new System.Drawing.Point(169, 9);
             this.label_ip.Name = "label_ip";
-            this.label_ip.Size = new System.Drawing.Size(53, 21);
+            this.label_ip.Size = new System.Drawing.Size(74, 21);
             this.label_ip.TabIndex = 4;
-            this.label_ip.Text = "IP：";
+            this.label_ip.Text = "IP地址";
             // 
             // label_port
             // 
             this.label_port.AutoSize = true;
-            this.label_port.Location = new System.Drawing.Point(352, 36);
+            this.label_port.Location = new System.Drawing.Point(455, 9);
             this.label_port.Name = "label_port";
-            this.label_port.Size = new System.Drawing.Size(75, 21);
+            this.label_port.Size = new System.Drawing.Size(73, 21);
             this.label_port.TabIndex = 5;
-            this.label_port.Text = "Port：";
+            this.label_port.Text = "端口号";
             // 
             // textBox_ip
             // 
-            this.textBox_ip.Location = new System.Drawing.Point(70, 36);
+            this.textBox_ip.Location = new System.Drawing.Point(173, 47);
             this.textBox_ip.Name = "textBox_ip";
             this.textBox_ip.Size = new System.Drawing.Size(251, 31);
             this.textBox_ip.TabIndex = 6;
             // 
             // textBox_port
             // 
-            this.textBox_port.Location = new System.Drawing.Point(442, 33);
+            this.textBox_port.Location = new System.Drawing.Point(459, 47);
             this.textBox_port.Name = "textBox_port";
             this.textBox_port.Size = new System.Drawing.Size(100, 31);
             this.textBox_port.TabIndex = 7;
+            // 
+            // comboBox_type
+            // 
+            this.comboBox_type.FormattingEnabled = true;
+            this.comboBox_type.Items.AddRange(new object[] {
+            "TCP",
+            "UDP"});
+            this.comboBox_type.Location = new System.Drawing.Point(12, 47);
+            this.comboBox_type.Name = "comboBox_type";
+            this.comboBox_type.Size = new System.Drawing.Size(121, 29);
+            this.comboBox_type.TabIndex = 8;
+            // 
+            // label_type
+            // 
+            this.label_type.AutoSize = true;
+            this.label_type.Location = new System.Drawing.Point(12, 9);
+            this.label_type.Name = "label_type";
+            this.label_type.Size = new System.Drawing.Size(94, 21);
+            this.label_type.TabIndex = 9;
+            this.label_type.Text = "连接模式";
             // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 536);
+            this.Controls.Add(this.label_type);
+            this.Controls.Add(this.comboBox_type);
             this.Controls.Add(this.textBox_port);
             this.Controls.Add(this.textBox_ip);
             this.Controls.Add(this.label_port);
@@ -139,6 +163,8 @@
         private System.Windows.Forms.Label label_port;
         private System.Windows.Forms.TextBox textBox_ip;
         private System.Windows.Forms.TextBox textBox_port;
+        private System.Windows.Forms.ComboBox comboBox_type;
+        private System.Windows.Forms.Label label_type;
     }
 }
 
