@@ -70,7 +70,7 @@ namespace SCtest
             var port = textBox_port.Text;
             IPAddress broadcast = IPAddress.Parse(ip);
 
-            byte[] sendbuf = Encoding.ASCII.GetBytes(message);
+            byte[] sendbuf = Encoding.UTF8.GetBytes(message);
             IPEndPoint ep = new IPEndPoint(broadcast, Convert.ToInt32(port));
 
             socket.SendTo(sendbuf, ep);
