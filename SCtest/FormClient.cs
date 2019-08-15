@@ -171,7 +171,9 @@ namespace SCtest
             else
             {
                 UDPSend(client, textBox_send.Text);
-            }           
+            }
+
+            textBox_send.Text = "";
         }
        
 
