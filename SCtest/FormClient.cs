@@ -72,8 +72,16 @@ namespace SCtest
 
             byte[] sendbuf = Encoding.UTF8.GetBytes(message);
             IPEndPoint ep = new IPEndPoint(broadcast, Convert.ToInt32(port));
-
-            socket.SendTo(sendbuf, ep);
+            try
+            {
+                setText(message);
+                socket.SendTo(sendbuf, ep);
+            }
+            catch (Exception)
+            {
+                setText("发送失败！");
+            }
+            
         }
 
         /// <summary>
